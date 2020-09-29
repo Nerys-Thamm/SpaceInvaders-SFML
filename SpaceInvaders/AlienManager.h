@@ -12,8 +12,8 @@ public:
 	bool bSideCollision;
 	CAlienManager();
 	~CAlienManager();
-	void MoveAliens();
-	void OnSideCollision();
+	bool MoveAliens();
+	bool OnSideCollision();
 	bool CheckCollisions(sf::RectangleShape _rect);
 	virtual void FixedUpdate();
 	

@@ -5,5 +5,6 @@ public:
 	static int score;
 	CGame();
 	~CGame();
+	int Start();
 };
 

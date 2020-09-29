@@ -56,3 +56,18 @@ bool CBunker::CheckCollisions(sf::RectangleShape _rect)
 	}
 	return bHasHit;
 }
+
+void CBunker::FixedUpdate()
+{
+	for (int i = 0; i < 5; i++)
+	{
+
+		for (int j = 0; j < 3; j++)
+		{
+			if (!BlockArr[i][j].bIsDestroyed)
+			{
+				CWindowUtilities::Draw(&BlockArr[i][j].rect);
+			}
+		}
+	}
+}

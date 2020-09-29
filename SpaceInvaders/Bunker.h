@@ -1,5 +1,6 @@
 #pragma once
 #include "Sprites.h"
+#include "EasySFML.h"
 
 struct BunkerBlock
 {
@@ -7,6 +8,7 @@ struct BunkerBlock
 	bool bIsDestroyed;
 };
 class CBunker
+	: CGameObject
 {
 public:
 	BunkerBlock BlockArr[5][3];
@@ -15,5 +17,6 @@ public:
 	CBunker(float _fX, float _fY);
 	~CBunker();
 	bool CheckCollisions(sf::RectangleShape _rect);
+	virtual void FixedUpdate();
 };
 

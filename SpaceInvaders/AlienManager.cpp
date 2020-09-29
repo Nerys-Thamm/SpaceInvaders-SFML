@@ -30,16 +30,24 @@ CAlienManager::CAlienManager()
 
 CAlienManager::~CAlienManager()
 {
+	for (int i = 0; i < 5; i++)
+	{
+		for (int j = 0; j < 11; j++)
+		{
+			delete AlienArr[i][j];
+		}
+	}
+	delete SpecialShip;
 }
 
-void CAlienManager::MoveAliens()
+bool CAlienManager::MoveAliens()
 {
 	bSideCollision = false;
 	for (int i = 0; i < 5; i++)
 	{
 		for (int j = 0; j < 11; j++)
 		{
-			if (AlienArr[i][j]->Move(5/(iRemainingAliens+1)) == true && AlienArr[i][j]->bIsAlive)
+			if (AlienArr[i][j]->Move(2/(iRemainingAliens+1)) == true && AlienArr[i][j]->bIsAlive)
 			{
 				bSideCollision = true;
 			}
@@ -47,19 +55,28 @@ void CAlienManager::MoveAliens()
 	}
 	if (bSideCollision)
 	{
-		OnSideCollision();
+		return OnSideCollision();
+	}
+	else
+	{
+		return false;
 	}
 }
 
-void CAlienManager::OnSideCollision()
+bool CAlienManager::OnSideCollision()
 {
+	bool bHasInvaded = false;
 	for (int i = 0; i < 5; i++)
 	{
 		for (int j = 0; j < 11; j++)
 		{
-			AlienArr[i][j]->Descend();
+			if (AlienArr[i][j]->Descend())
+			{
+				bHasInvaded = true;
+			}
 		}
 	}
+	return bHasInvaded;
 }
 
 bool CAlienManager::CheckCollisions(sf::RectangleShape _rect)
@@ -97,7 +114,7 @@ bool CAlienManager::CheckCollisions(sf::RectangleShape _rect)
 
 void CAlienManager::FixedUpdate()
 {
-	MoveAliens();
+	
 	if ((rand() % 3000) + 1 == 1 && SpecialShip == nullptr)
 	{
 		SpecialShip = new CAlien(0, 50, 300);

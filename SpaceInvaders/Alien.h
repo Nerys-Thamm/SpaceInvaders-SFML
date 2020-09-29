@@ -17,8 +17,9 @@ public:
 	CAlien(float _fX, float _fY, int _score);
 	~CAlien();
 	bool Move(float _fSpeedMult);
-	void Descend();
+	bool Descend();
 	bool CheckCollision(sf::RectangleShape _rect);
+	static void DeleteLasers();
 	static std::vector<CLaser*> Lasers;
 	virtual void FixedUpdate();
 

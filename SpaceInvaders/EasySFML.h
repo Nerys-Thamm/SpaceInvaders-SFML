@@ -11,7 +11,7 @@ public:
 	virtual void FixedUpdate() {};
 	virtual void LateUpdate(float _fDeltaTime) {};
 	
-	bool bIsEnabled;
+	bool bIsEnabled = true;
 protected:
 	CGameObject();
 	virtual ~CGameObject();

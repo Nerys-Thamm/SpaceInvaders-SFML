@@ -13,6 +13,7 @@ CPlayer::CPlayer()
 	fPlayerX = 400;
 	fPlayerY = 950;
 	playerRect.setPosition(sf::Vector2f(fPlayerX, fPlayerY));
+	Lives = 3;
 }
 
 

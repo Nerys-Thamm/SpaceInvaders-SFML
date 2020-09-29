@@ -22,6 +22,7 @@ CAlien::CAlien(float _fX, float _fY, int _score = 0)
 
 CAlien::~CAlien()
 {
+	
 }
 
 bool CAlien::Move(float _fSpeedMult)
@@ -48,6 +49,15 @@ bool CAlien::CheckCollision(sf::RectangleShape _rect)
 	
 }
 
+void CAlien::DeleteLasers()
+{
+	for each (CLaser* laser in Lasers)
+	{
+		delete laser;
+	}
+	Lasers.clear();
+}
+
 void CAlien::FixedUpdate()
 {
 	
@@ -62,11 +72,19 @@ void CAlien::FixedUpdate()
 	}
 }
 
-void CAlien::Descend()
+bool CAlien::Descend()
 {
 	fDirectionMultiplier *= -1.0f;
 	fY += 30;
 	alienRect.setPosition(sf::Vector2f(fX, fY));
+	if (fY > 950)
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
 }
 
 std::vector<CLaser*> CAlien::Lasers;
