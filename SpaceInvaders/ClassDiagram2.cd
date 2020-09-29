@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
+  <Class Name="CAlien">
+    <Position X="0.5" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAEpAAAIgAABAAAAAAAAAAAACFAAACgAAAAAA=</HashCode>
+      <FileName>Alien.h</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="alienRect" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="CAlienManager">
+    <Position X="5" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAQAAAAAgAACAAAAAAAAAAAADAAAACAABAAAAAAAAI=</HashCode>
+      <FileName>AlienManager.h</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="SpecialShip" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Field Name="AlienArr" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="CBullet">
+    <Position X="7.25" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAIAAIAAAAAAABAAAAAAAAAAAAAAAAACIAAAIAA=</HashCode>
+      <FileName>Bullet.h</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="bulletRect" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="CBunker">
+    <Position X="2" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAACAQAAAAAABQAAAAAAAAAAACAAAACAAAAAAA=</HashCode>
+      <FileName>Bunker.h</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Field Name="BlockArr" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="CGame">
+    <Position X="11.75" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABAAAAAAAAAAIAACAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Game.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CLaser">
+    <Position X="9.5" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAABgAAAAAAABAAAACAAAAAAAAAAAACAAAAAAA=</HashCode>
+      <FileName>Laser.h</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="laserRect" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="CMainMenu">
+    <Position X="14" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAEAAAAAQAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MainMenu.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CPlayer">
+    <Position X="2.75" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIQAAIAAAAAABAAAAAAAAAAQAAAgAgAAEAAAAAAAAgA=</HashCode>
+      <FileName>Player.h</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="playerRect" />
+      <Field Name="pBullet" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="CSprites">
+    <Position X="12" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAABAAAAAAAAA=</HashCode>
+      <FileName>Sprites.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CGameObject">
+    <Position X="5" Y="0.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAgAABEgAAAAAIAAAAAIAAAAAAAAAAAAAAEA=</HashCode>
+      <FileName>EasySFML.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CObjectController">
+    <Position X="12.25" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAUAAAAAAgEAAAAAAAAAIAAAAAAAAQABAAAAAIAAAAA=</HashCode>
+      <FileName>EasySFML.h</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="deltaClock" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="CWindowUtilities">
+    <Position X="14.75" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>EasySFML.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="sf::Clock" Collapsed="true">
+    <Position X="9.25" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAAgAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>d:\SFML-2.5.1-windows-vc15-32-bit\SFML-2.5.1\include\SFML\System\Clock.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="sf::RectangleShape" Collapsed="true">
+    <Position X="5" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAIAAAAgAAAAAAAAAAAAAAAAAAAAAAAIAACI=</HashCode>
+      <FileName>d:\SFML-2.5.1-windows-vc15-32-bit\SFML-2.5.1\include\SFML\Graphics\RectangleShape.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Struct Name="BunkerBlock">
+    <Position X="5" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Bunker.h</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="rect" />
+    </ShowAsAssociation>
+  </Struct>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
