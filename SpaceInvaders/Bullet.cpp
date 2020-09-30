@@ -3,8 +3,10 @@
 
 CBullet::CBullet(float _fX)
 {
-	fX = _fX;
+	fX = _fX; //Set Coords
 	fY = 950;
+
+	//Config bullet shape
 	bulletRect.setSize(sf::Vector2f(1, 16));
 	bulletRect.setOutlineThickness(2);
 	bulletRect.setOutlineColor(sf::Color::White);
@@ -15,9 +17,9 @@ CBullet::CBullet(float _fX)
 
 void CBullet::Update(float _fDeltaTime)
 {
-	fY -= 400 * _fDeltaTime * CGame::iBulletSpeedMult;
-	bulletRect.setPosition(sf::Vector2f(fX, fY));
-	CWindowUtilities::Draw(&bulletRect);
+	fY -= 400 * _fDeltaTime * CGame::iBulletSpeedMult; //move the bullet upwards by an amount determined by DeltaTime
+	bulletRect.setPosition(sf::Vector2f(fX, fY)); //Update the bullets position
+	CWindowUtilities::Draw(&bulletRect); //Prepare the bullet to be drawn
 }
 
 
