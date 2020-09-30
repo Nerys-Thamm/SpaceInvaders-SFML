@@ -21,17 +21,25 @@ namespace ns {
 	// --------------------------------------------------------------------------------
 	struct ScoreData
 	{
+		/// <summary>Stores the Players Score</summary>
 		int score;
+
+		/// <summary>Stores the Players Name</summary>
 		std::string player;
+
+		/// <summary>Stores the Date and Time the High Score was made</summary>
 		std::string time;
 	};
 }
 
 int main()
 {
+	//Get the Player's Windows account username
 	char name[UNLEN + 1];
 	DWORD name_len = UNLEN + 1;
 	GetUserName(name, &name_len);
+
+	//Convert it to a string
 	std::string Username = "";
 	for (int i = 0; i < name_len-1; i++)
 	{
@@ -41,22 +49,32 @@ int main()
 		}
 	}
 	
+	//Create the Main window
 	sf::RenderWindow window(sf::VideoMode(800, 700), "Space Invaders - Nerys Thamm");
-	srand(764387493475);
-	sf::Event event;
-	std::ifstream Reader;
-	std::vector<ns::ScoreData> HighScores;
-	ns::ScoreData data;
+	srand(764387493475); //Initialise random
+	sf::Event event; //Instantiate event stack
+
+	std::ifstream Reader; //Create file reader
+	std::vector<ns::ScoreData> HighScores; //Create HighScore list
+	ns::ScoreData data; //create Score Data struct
+
+	//Open the Leaderboard file and read the number of ScoreData stored from the first line
 	int len;
 	Reader.open("Resources/Leaderboard.dat");
 	Reader >> len;
+
+	//Skip to the second line
 	Reader.ignore(10, '\n');
-	for (int i = 0; i < len; i++)
+
+	for (int i = 0; i < len; i++) //For every ScoreData in the file
 	{
 		std::string line;
 		std::string temp;
-		std::getline(Reader, line);
-		std::istringstream dataStream(line);
+
+		std::getline(Reader, line); //store the current line in a string
+		std::istringstream dataStream(line); //create a stringstream from the string
+
+		//Parse the stream
 		std::getline(dataStream, temp, '%');
 		data.score = std::stoi(temp);
 		std::getline(dataStream, data.player, '%');
@@ -64,16 +82,16 @@ int main()
 		HighScores.push_back(data);
 	}
 
-	Reader.close();
+	Reader.close(); //Close the file
 
 	
-	
-	int iScore = 0;
+	//Create the Main Menu
+	int iScore = 0; 
 	bool bInMenu = true;
 	bool bIsPlaying = false;
 	std::string Leaderboard = "Leaderboard:";
 	int iTemp = 0;
-	for (std::vector<ns::ScoreData>::reverse_iterator i = HighScores.rbegin(); i != HighScores.rend(); ++i)
+	for (std::vector<ns::ScoreData>::reverse_iterator i = HighScores.rbegin(); i != HighScores.rend(); ++i) //Create the leaderboard from the list of high scores
 	{
 		if (iTemp++ < 4)
 		{
@@ -81,8 +99,12 @@ int main()
 		}
 
 	}
+
+	//load a font from resources...
 	sf::Font font;
 	font.loadFromFile("Resources/sansation.ttf");
+
+	//Instantiate the UI elements
 	sf::Text title;
 	sf::Text prompt;
 	sf::Text lboard;
@@ -90,72 +112,84 @@ int main()
 	sf::Text gameoverPrompt;
 	sf::Text gameoverInfo;
 
+	//Config Title
 	title.setPosition(10, 10);
 	title.setFillColor(sf::Color::White);
 	title.setFont(font);
 	title.setCharacterSize(100);
 	title.setString("Space Invaders");
 
+	//Config Prompt
 	prompt.setPosition(275, 175);
 	prompt.setFillColor(sf::Color::White);
 	prompt.setFont(font);
 	prompt.setString("Press [Spacebar] to play, " + Username + "! \n\nControls:\n[A] Move Left\n[D] Move Right\n[S] Shoot\n[Esc] Toggle Debug Menu\n\nCredits:\n[Creator] Nerys Thamm\n[Sprites] classicgaming.cc\n[Special thanks] " + Username + ", for playing!\n[...] See README");
 
+	//Config Leaderboard
 	lboard.setPosition(10, 175);
 	lboard.setFillColor(sf::Color::White);
 	lboard.setFont(font);
 	lboard.setCharacterSize(22);
 	lboard.setString(Leaderboard);
 
+	//Config Gameover Title
 	gameoverTitle.setPosition(30, 20);
 	gameoverTitle.setFillColor(sf::Color::White);
 	gameoverTitle.setFont(font);
 	gameoverTitle.setCharacterSize(140);
 	gameoverTitle.setString("Game Over!");
 
+	//Config Gameover Prompt
 	gameoverPrompt.setPosition(200, 400);
 	gameoverPrompt.setFillColor(sf::Color::White);
 	gameoverPrompt.setFont(font);
 	gameoverPrompt.setString("Press [Spacebar] to continue...");
 
+	//Config Gameover Info
 	gameoverInfo.setPosition(80, 200);
 	gameoverInfo.setFillColor(sf::Color::White);
 	gameoverInfo.setFont(font);
 	gameoverInfo.setString("");
 
+	//Instantiate the Game
 	CGame game;
 	
 	
-	while (window.isOpen())
+	while (window.isOpen()) //While the window is open...
 	{
-			while (window.pollEvent(event))
+			while (window.pollEvent(event)) // for every event in the event stack...
 			{
 				switch (event.type)
 				{
-				case sf::Event::Closed:
+				case sf::Event::Closed: //If the window is being closed, close the window
 					window.close();
 					break;
-				case sf::Event::KeyPressed:
+				case sf::Event::KeyPressed: //If a key has been pressed...
 					switch (event.key.code)
 					{
-					case sf::Keyboard::Space:
-						if (bInMenu)
+					case sf::Keyboard::Space: //If that key was Space...
+						if (bInMenu) //And the player is currently in the main menu
 						{
-							iScore = game.Start();
+							iScore = game.Start(); //Start the game window and retrieve the players score when the game ends
 							bInMenu = false;
+
+							//Get and format date and time
 							time_t now = time(0);
 							tm ftime;
 							localtime_s(&ftime, &now);
 							char buffer[50];
 							strftime(buffer, 50, "[%d/%m/%y][%T]", &ftime);
-							if (HighScores.empty())
+
+							if (HighScores.empty()) //If there are no High Scores...
 							{
-								HighScores.push_back(ns::ScoreData{ iScore, Username, buffer });
+								HighScores.push_back(ns::ScoreData{ iScore, Username, buffer }); //Add a new high score using the players score, their username, and the formatted date and time
 							}
-							else if (iScore > HighScores.back().score)
+							else if (iScore > HighScores.back().score) //Or the players score is higher than the highest top score...
 							{
-								HighScores.push_back(ns::ScoreData{ iScore, Username, buffer });
+								HighScores.push_back(ns::ScoreData{ iScore, Username, buffer }); //Add a new high score using the players score, their username, and the formatted date and time
 							}
+
+							//Update the leaderboard with the new data
 							Leaderboard = "Leaderboard:";
 							int iTemp = 0;
 							for (std::vector<ns::ScoreData>::reverse_iterator i = HighScores.rbegin(); i != HighScores.rend(); ++i)
@@ -167,6 +201,8 @@ int main()
 
 							}
 							lboard.setString(Leaderboard);
+
+							//Prepare the gameover UI based on player score
 							gameoverInfo.setString("You scored " + std::to_string(iScore) + ((iScore < 400) ? " points? Thats embarrassing, " : " points? Not bad at all, ") + Username + "!");
 						}
 						else
@@ -183,40 +219,36 @@ int main()
 				
 			}
 			
-			window.clear();
+			window.clear(); //Clear the window
 			
-			if (bInMenu)
+			if (bInMenu) //If the player is in the menu...
 			{
-				window.draw(title);
+				window.draw(title); //Draw the main menu UI
 				window.draw(prompt);
 				window.draw(lboard);
 			}
-			else
+			else //Otherwise...
 			{
-				window.draw(gameoverTitle);
+				window.draw(gameoverTitle); //Draw the game over UI
 				window.draw(gameoverPrompt);
 				window.draw(gameoverInfo);
 			}
 
-			window.display();
+			window.display(); //Display the drawn frame to the window
 			
-
-
-		
-
-
-		
 	}
 	
 	
-	std::ofstream Writer("Resources/Leaderboard.dat");
-	Writer << HighScores.size() << std::endl;
-	for each (ns::ScoreData score in HighScores)
+	//WHEN THE WINDOW HAS BEEN CLOSED
+
+	std::ofstream Writer("Resources/Leaderboard.dat"); //Create a file writer and open the leaderboard file
+	Writer << HighScores.size() << std::endl; //Update the size specifier in the file
+	for each (ns::ScoreData score in HighScores) //format every high score and write it to the file
 	{
 		Writer << std::to_string(score.score) + "%" + score.player + "%" + score.time + "%" << std::endl;
 	}
-	Writer.close();
+	Writer.close(); //Close the file
 	
 	
-	return 0;
+	return 0; //Close the Program
 }
