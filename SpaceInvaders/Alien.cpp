@@ -4,6 +4,15 @@
 
 
 
+// ********************************************************************************
+/// <summary>
+/// Constructor for the CAlien class
+/// </summary>
+/// <param name="_fX"></param>
+/// <param name="_fY"></param>
+/// <param name="_score"></param>
+/// <returns></returns>
+// ********************************************************************************
 CAlien::CAlien(float _fX, float _fY, int _score = 0)
 {
 	if (_score <= 10)
@@ -40,11 +49,29 @@ CAlien::CAlien(float _fX, float _fY, int _score = 0)
 }
 
 
+// ********************************************************************************
+/// <summary>
+/// Destructor for the CAlien class
+/// </summary>
+/// <returns></returns>
+// ********************************************************************************
 CAlien::~CAlien()
 {
 	
 }
 
+// ********************************************************************************
+/// <summary>
+/// <para>
+/// Function name: Move
+/// Function is part of Class: CAlien
+/// </para>
+/// </summary>
+/// <param name="_fSpeedMult"><para>
+/// Type: float
+/// </para></param>
+/// <returns>Value of type: bool</returns>
+// ********************************************************************************
 bool CAlien::Move(float _fSpeedMult)
 {
 	fX += ((1+_fSpeedMult + CGame::iAlienSpeedMult + CGame::iLevel)  * fDirectionMultiplier)/8;
@@ -55,7 +82,18 @@ bool CAlien::Move(float _fSpeedMult)
 		
 	
 }
-
+// ********************************************************************************
+/// <summary>
+/// <para>
+/// Function name: CheckCollision
+/// Function is part of Class: CAlien
+/// </para>
+/// </summary>
+/// <param name="_rect"><para>
+/// Type: sf::RectangleShape
+/// </para></param>
+/// <returns>Value of type: bool</returns>
+// ********************************************************************************
 bool CAlien::CheckCollision(sf::RectangleShape _rect)
 {
 	if (_rect.getGlobalBounds().intersects(alienRect.getGlobalBounds()))
@@ -69,7 +107,14 @@ bool CAlien::CheckCollision(sf::RectangleShape _rect)
 	}
 	
 }
-
+// ********************************************************************************
+/// <summary>
+/// <para>
+/// Function name: DeleteLasers
+/// Function is part of Class: CAlien
+/// </para>
+/// </summary>
+// ********************************************************************************
 void CAlien::DeleteLasers()
 {
 	for each (CLaser* laser in Lasers)
@@ -78,7 +123,14 @@ void CAlien::DeleteLasers()
 	}
 	Lasers.clear();
 }
-
+// ********************************************************************************
+/// <summary>
+/// <para>
+/// Function name: FixedUpdate
+/// Function is part of Class: CAlien
+/// </para>
+/// </summary>
+// ********************************************************************************
 void CAlien::FixedUpdate()
 {
 	
@@ -98,6 +150,15 @@ void CAlien::FixedUpdate()
 	}
 }
 
+// ********************************************************************************
+/// <summary>
+/// <para>
+/// Function name: Descend
+/// Function is part of Class: CAlien
+/// </para>
+/// </summary>
+/// <returns>Value of type: bool</returns>
+// ********************************************************************************
 bool CAlien::Descend()
 {
 	fDirectionMultiplier *= -1.0f;

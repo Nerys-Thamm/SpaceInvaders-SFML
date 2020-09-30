@@ -127,9 +127,7 @@
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Laser.cpp" />
     <ClCompile Include="Main.cpp" />
-    <ClCompile Include="MainMenu.cpp" />
     <ClCompile Include="Player.cpp" />
-    <ClCompile Include="Sprites.cpp" />
     <ClCompile Include="EasySFML.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -140,9 +138,7 @@
     <ClInclude Include="DebugWindow.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="Laser.h" />
-    <ClInclude Include="MainMenu.h" />
     <ClInclude Include="Player.h" />
-    <ClInclude Include="Sprites.h" />
     <ClInclude Include="EasySFML.h" />
   </ItemGroup>
   <ItemGroup>

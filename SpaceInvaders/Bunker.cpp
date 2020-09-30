@@ -1,7 +1,15 @@
 #include "Bunker.h"
 
-
-
+// ********************************************************************************
+/// <summary>
+/// <para>
+/// Constructor for Class: CBunker
+/// </para>
+/// </summary>
+/// <param name="_fX">Type: Float, X coord to spawn the bunker at</param>
+/// <param name="_fY">Type: Float, Y coord to spawn the bunker at</param>
+/// <returns></returns>
+// ********************************************************************************
 CBunker::CBunker(float _fX, float _fY)
 {
 	fX = _fX;
@@ -31,11 +39,30 @@ CBunker::CBunker(float _fX, float _fY)
 	}
 }
 
-
+// ********************************************************************************
+/// <summary>
+/// <para>
+/// Destructor for Class: CBunker
+/// </para>
+/// </summary>
+/// <returns></returns>
+// ********************************************************************************
 CBunker::~CBunker()
 {
 }
 
+// ********************************************************************************
+/// <summary>
+/// <para>
+/// Function name: CheckCollisions
+/// Function is part of Class: CBunker
+/// </para>
+/// </summary>
+/// <param name="_rect"><para>
+/// Type: sf::RectangleShape
+/// </para></param>
+/// <returns>Value of type: bool</returns>
+// ********************************************************************************
 bool CBunker::CheckCollisions(sf::RectangleShape _rect)
 {
 	bool bHasHit = false;
@@ -57,6 +84,14 @@ bool CBunker::CheckCollisions(sf::RectangleShape _rect)
 	return bHasHit;
 }
 
+// ********************************************************************************
+/// <summary>
+/// <para>
+/// Function name: FixedUpdate
+/// Function is part of Class: CBunker
+/// </para>
+/// </summary>
+// ********************************************************************************
 void CBunker::FixedUpdate()
 {
 	for (int i = 0; i < 5; i++)

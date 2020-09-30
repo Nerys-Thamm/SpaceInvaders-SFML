@@ -8,7 +8,14 @@
 
 
 
-
+// ********************************************************************************
+/// <summary>
+/// <para>
+/// Constructor for Class: DebugWindow
+/// </para>
+/// </summary>
+/// <returns></returns>
+// ********************************************************************************
 DebugWindow::DebugWindow()
 {
 	window = new sf::RenderWindow(sf::VideoMode(400, 400), "Space Invaders - Debug");
@@ -42,13 +49,31 @@ DebugWindow::DebugWindow()
 
 }
 
-
+// ********************************************************************************
+/// <summary>
+/// <para>
+/// Destructor for Class: DebugWindow
+/// </para>
+/// </summary>
+/// <returns></returns>
+// ********************************************************************************
 DebugWindow::~DebugWindow()
 {
 	window->close();
 	delete window;
 }
 
+// ********************************************************************************
+/// <summary>
+/// <para>
+/// Function name: Update
+/// Function is part of Class: DebugWindow
+/// </para>
+/// </summary>
+/// <param name="_fDeltaTime"><para>
+/// Type: float
+/// </para></param>
+// ********************************************************************************
 void DebugWindow::Update(float _fDeltaTime)
 {
 	while (window->pollEvent(wEvent))

@@ -14,6 +14,11 @@
 
 
 namespace ns {
+	// --------------------------------------------------------------------------------
+	/// <summary>
+	/// Struct to store Leaderboard Data
+	/// </summary>
+	// --------------------------------------------------------------------------------
 	struct ScoreData
 	{
 		int score;
@@ -123,9 +128,6 @@ int main()
 	
 	while (window.isOpen())
 	{
-
-		
-		
 			while (window.pollEvent(event))
 			{
 				switch (event.type)
