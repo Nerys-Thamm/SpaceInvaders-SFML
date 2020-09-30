@@ -1,4 +1,5 @@
 #include "Player.h"
+#include "Game.h"
 
 
 
@@ -13,7 +14,8 @@ CPlayer::CPlayer()
 	fPlayerX = 400;
 	fPlayerY = 950;
 	playerRect.setPosition(sf::Vector2f(fPlayerX, fPlayerY));
-	Lives = 3;
+	CGame::iPlayerLives = 3;
+	CGame::iBulletSpeedMult = 1;
 }
 
 
@@ -68,7 +70,7 @@ bool CPlayer::CheckCollision(sf::RectangleShape lazer)
 {
 	if (lazer.getGlobalBounds().intersects(playerRect.getGlobalBounds()))
 	{
-		Lives--;
+		CGame::iPlayerLives--;
 		return true;
 	}
 	else

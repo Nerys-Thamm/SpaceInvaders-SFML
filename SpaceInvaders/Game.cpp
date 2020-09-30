@@ -7,6 +7,7 @@
 #include "EasySFML.h"
 #include <algorithm>
 #include "Game.h"
+#include "DebugWindow.h"
 
 
 CGame::CGame()
@@ -24,10 +25,10 @@ int CGame::Start()
 	sf::RenderWindow window(sf::VideoMode(800, 1000), "Space Invaders - Nerys Thamm");
 	srand(764387493475);
 	sf::Event event;
-
+	DebugWindow* debug = nullptr;
 
 	CGame::score = 0;
-
+	CGame::iLevel = 1;
 
 	
 	bool bIsPlaying = true;
@@ -43,6 +44,7 @@ int CGame::Start()
 	lives.setPosition(sf::Vector2f(400, 10));
 	lives.setFillColor(sf::Color::White);
 	lives.setFont(font);
+
 	CBunker bunker(125, 800);
 	CBunker bunker2(275, 800);
 	CBunker bunker3(425, 800);
@@ -54,8 +56,32 @@ int CGame::Start()
 			switch (event.type)
 			{
 			case sf::Event::Closed:
+				bIsPlaying = false;
 				window.close();
+				CWindowUtilities::ToDrawList.clear();
+				delete player;
+				delete manager;
+				CAlien::DeleteLasers();
+				return 0;
 				break;
+			case sf::Event::KeyPressed:
+				switch (event.key.code)
+				{
+				case sf::Keyboard::Escape:
+					if (debug == nullptr)
+					{
+						debug = new DebugWindow();
+						bDebugMode = true;
+					}
+					else
+					{
+						
+						bDebugMode = false;
+					}
+					break;
+				default:
+					break;
+				}
 			default:
 				break;
 			}
@@ -63,9 +89,17 @@ int CGame::Start()
 		}
 
 		window.clear();
+		if (debug != nullptr)
+		{
+			if (!bDebugMode)
+			{
+				delete debug;
+				debug = nullptr;
+				
+			}
+		}
 
-
-		if (manager->MoveAliens() || player->Lives <= 0)
+		if (manager->MoveAliens() || CGame::iPlayerLives <= 0)
 		{
 			bIsPlaying = false;
 			window.close();
@@ -83,12 +117,13 @@ int CGame::Start()
 		{
 			delete manager;
 			manager = new CAlienManager();
+			CGame::iLevel++;
 		}
 
 
 
 		score.setString(std::to_string(CGame::score));
-		lives.setString(std::to_string(player->Lives));
+		lives.setString(std::to_string(CGame::iPlayerLives));
 		CWindowUtilities::Draw(&score);
 		CWindowUtilities::Draw(&lives);
 
@@ -136,3 +171,8 @@ int CGame::Start()
 }
 
 int CGame::score = 0;
+bool CGame::bDebugMode = false;
+int CGame::iAlienSpeedMult = 1;
+int CGame::iBulletSpeedMult = 1;
+int CGame::iPlayerLives = 3;
+int CGame::iLevel = 1;

@@ -22,8 +22,8 @@ CBunker::CBunker(float _fX, float _fY)
 			
 			BlockArr[i][j].rect.setSize(sf::Vector2f(20, 20));
 			BlockArr[i][j].rect.setOutlineThickness(1);
-			BlockArr[i][j].rect.setOutlineColor(sf::Color::White);
-			BlockArr[i][j].rect.setFillColor(sf::Color::White);
+			BlockArr[i][j].rect.setOutlineColor(sf::Color::Green);
+			BlockArr[i][j].rect.setFillColor(sf::Color::Green);
 			BlockArr[i][j].rect.setOrigin(sf::Vector2f(10, 10));
 			BlockArr[i][j].rect.setPosition(sf::Vector2f(fX+(i*20), fY+((j+iYMod)*20)));
 			BlockArr[i][j].bIsDestroyed = false;

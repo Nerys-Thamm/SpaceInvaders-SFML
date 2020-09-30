@@ -10,6 +10,8 @@ class CAlien :
 public:
 	
 	sf::RectangleShape alienRect;
+	sf::Sprite alienSprite;
+	sf::Texture alienTexture;
 	float fX, fY;
 	float fDirectionMultiplier;
 	bool bIsAlive;

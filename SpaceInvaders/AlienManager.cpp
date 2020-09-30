@@ -4,6 +4,7 @@
 
 CAlienManager::CAlienManager()
 {
+	CGame::iAlienSpeedMult = 1;
 	for (int i = 0; i < 5; i++)
 	{
 		for (int j = 0; j < 11; j++)
@@ -47,7 +48,7 @@ bool CAlienManager::MoveAliens()
 	{
 		for (int j = 0; j < 11; j++)
 		{
-			if (AlienArr[i][j]->Move(2/(iRemainingAliens+1)) == true && AlienArr[i][j]->bIsAlive)
+			if (AlienArr[i][j]->Move(5/(iRemainingAliens+1)) == true && AlienArr[i][j]->bIsAlive)
 			{
 				bSideCollision = true;
 			}
