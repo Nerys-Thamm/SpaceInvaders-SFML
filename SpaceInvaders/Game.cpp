@@ -18,6 +18,7 @@ CGame::CGame()
 
 CGame::~CGame()
 {
+	
 }
 
 int CGame::Start()
@@ -25,7 +26,7 @@ int CGame::Start()
 	sf::RenderWindow window(sf::VideoMode(800, 1000), "Space Invaders - Nerys Thamm");
 	srand(764387493475);
 	sf::Event event;
-	DebugWindow* debug = nullptr;
+	debug = nullptr;
 
 	CGame::score = 0;
 	CGame::iLevel = 1;
@@ -41,7 +42,7 @@ int CGame::Start()
 	score.setFillColor(sf::Color::White);
 	score.setFont(font);
 	sf::Text lives;
-	lives.setPosition(sf::Vector2f(400, 10));
+	lives.setPosition(sf::Vector2f(650, 10));
 	lives.setFillColor(sf::Color::White);
 	lives.setFont(font);
 
@@ -58,6 +59,11 @@ int CGame::Start()
 			case sf::Event::Closed:
 				bIsPlaying = false;
 				window.close();
+				if (debug != nullptr)
+				{
+					delete debug;
+				}
+				bDebugMode = false;
 				CWindowUtilities::ToDrawList.clear();
 				delete player;
 				delete manager;
@@ -101,7 +107,13 @@ int CGame::Start()
 
 		if (manager->MoveAliens() || CGame::iPlayerLives <= 0)
 		{
+			if (debug != nullptr)
+			{
+				delete debug;
+			}
+			bDebugMode = false;
 			bIsPlaying = false;
+			
 			window.close();
 			CWindowUtilities::ToDrawList.clear();
 			delete player;
@@ -122,8 +134,8 @@ int CGame::Start()
 
 
 
-		score.setString(std::to_string(CGame::score));
-		lives.setString(std::to_string(CGame::iPlayerLives));
+		score.setString("Score: [ " + std::to_string(CGame::score) + " ]");
+		lives.setString("Lives: [ " + std::to_string(CGame::iPlayerLives) + " ]");
 		CWindowUtilities::Draw(&score);
 		CWindowUtilities::Draw(&lives);
 

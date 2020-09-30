@@ -5,15 +5,19 @@
 
 CPlayer::CPlayer()
 {
-	
+	playerTexture.loadFromFile("Resources/Player.png");
+	playerSprite.setTexture(playerTexture);
+	playerSprite.setScale(sf::Vector2f(1.0f, 1.0f));
+	playerSprite.setOrigin(sf::Vector2f(40, 45));
 	playerRect.setSize(sf::Vector2f(80, 40));
 	playerRect.setOutlineThickness(2);
-	playerRect.setOutlineColor(sf::Color::White);
+	playerRect.setOutlineColor(sf::Color::Red);
 	playerRect.setFillColor(sf::Color::Black);
 	playerRect.setOrigin(sf::Vector2f(40, 20));
 	fPlayerX = 400;
 	fPlayerY = 950;
 	playerRect.setPosition(sf::Vector2f(fPlayerX, fPlayerY));
+	playerSprite.setPosition(sf::Vector2f(fPlayerX, fPlayerY));
 	CGame::iPlayerLives = 3;
 	CGame::iBulletSpeedMult = 1;
 }
@@ -33,6 +37,7 @@ void CPlayer::TryMove(float _fDeltaX)
 	{
 		fPlayerX += _fDeltaX;
 		playerRect.setPosition(sf::Vector2f(fPlayerX, fPlayerY));
+		playerSprite.setPosition(sf::Vector2f(fPlayerX, fPlayerY));
 		return;
 	}
 }
@@ -57,12 +62,17 @@ void CPlayer::Update(float _fDeltaTime)
 		}
 	}
 	playerRect.setPosition(sf::Vector2f(fPlayerX, fPlayerY));
+	playerSprite.setPosition(sf::Vector2f(fPlayerX, fPlayerY));
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::S) && (!bBulletExists))
 	{
 		pBullet = new CBullet(fPlayerX);
 		bBulletExists = true;
 	}
-	CWindowUtilities::Draw(&playerRect);
+	if (CGame::bDebugMode)
+	{
+		CWindowUtilities::Draw(&playerRect);
+	}
+	CWindowUtilities::Draw(&playerSprite);
 	
 }
 

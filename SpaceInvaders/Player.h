@@ -9,7 +9,8 @@ class CPlayer :
 public:
 	sf::RectangleShape playerRect;
 	float fPlayerX, fPlayerY;
-	
+	sf::Sprite playerSprite;
+	sf::Texture playerTexture;
 	CPlayer();
 	~CPlayer();
 	void TryMove(float _fDeltaX);

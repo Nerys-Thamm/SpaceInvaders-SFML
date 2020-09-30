@@ -1,7 +1,9 @@
 #pragma once
+#include "DebugWindow.h"
 class CGame
 {
 public:
+	
 	static int score;
 	static bool bDebugMode;
 	static int iAlienSpeedMult;
@@ -10,6 +12,7 @@ public:
 	static int iLevel;
 	CGame();
 	~CGame();
+	DebugWindow* debug = nullptr;
 	int Start();
 };
 

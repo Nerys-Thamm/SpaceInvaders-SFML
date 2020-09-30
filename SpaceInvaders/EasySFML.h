@@ -1,6 +1,7 @@
 #pragma once
 #include <SFML\System.hpp>
 #include <SFML\Graphics.hpp>
+
 #include <vector>
 
 class CGameObject
@@ -44,6 +45,7 @@ public:
 	static void Draw(sf::Drawable* Draw);
 	
 };
+
 
 
 
