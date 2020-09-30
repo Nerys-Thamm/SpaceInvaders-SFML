@@ -1,14 +1,6 @@
 #include "AlienManager.h"
 #include "Game.h"
 
-// ********************************************************************************
-/// <summary>
-/// <para>
-/// Constructor for Class: CAlienManager
-/// </para>
-/// </summary>
-/// <returns></returns>
-// ********************************************************************************
 CAlienManager::CAlienManager()
 {
 	CGame::iAlienSpeedMult = 1;
@@ -35,14 +27,7 @@ CAlienManager::CAlienManager()
 	iRemainingAliens = 55;
 }
 
-// ********************************************************************************
-/// <summary>
-/// <para>
-/// Destructor for Class: CAlienManager
-/// </para>
-/// </summary>
-/// <returns></returns>
-// ********************************************************************************
+
 CAlienManager::~CAlienManager()
 {
 	for (int i = 0; i < 5; i++)
@@ -55,15 +40,7 @@ CAlienManager::~CAlienManager()
 	delete SpecialShip;
 }
 
-// ********************************************************************************
-/// <summary>
-/// <para>
-/// Function name: MoveAliens
-/// Function is part of Class: CAlienManager
-/// </para>
-/// </summary>
-/// <returns>Value of type: bool</returns>
-// ********************************************************************************
+
 bool CAlienManager::MoveAliens()
 {
 	bSideCollision = false;
@@ -87,15 +64,7 @@ bool CAlienManager::MoveAliens()
 	}
 }
 
-// ********************************************************************************
-/// <summary>
-/// <para>
-/// Function name: OnSideCollision
-/// Function is part of Class: CAlienManager
-/// </para>
-/// </summary>
-/// <returns>Value of type: bool</returns>
-// ********************************************************************************
+
 bool CAlienManager::OnSideCollision()
 {
 	bool bHasInvaded = false;
@@ -112,18 +81,7 @@ bool CAlienManager::OnSideCollision()
 	return bHasInvaded;
 }
 
-// ********************************************************************************
-/// <summary>
-/// <para>
-/// Function name: CheckCollisions
-/// Function is part of Class: CAlienManager
-/// </para>
-/// </summary>
-/// <param name="_rect"><para>
-/// Type: sf::RectangleShape
-/// </para></param>
-/// <returns>Value of type: bool</returns>
-// ********************************************************************************
+
 bool CAlienManager::CheckCollisions(sf::RectangleShape _rect)
 {
 	bool bHasHit = false;
@@ -155,14 +113,7 @@ bool CAlienManager::CheckCollisions(sf::RectangleShape _rect)
 	return bHasHit;
 }
 
-// ********************************************************************************
-/// <summary>
-/// <para>
-/// Function name: FixedUpdate
-/// Function is part of Class: CAlienManager
-/// </para>
-/// </summary>
-// ********************************************************************************
+
 void CAlienManager::FixedUpdate()
 {
 	

@@ -9,48 +9,51 @@
 #include "Game.h"
 #include "DebugWindow.h"
 
-
-
-
-
 int CGame::Start()
 {
-	sf::RenderWindow window(sf::VideoMode(800, 1000), "Space Invaders - Nerys Thamm");
-	srand(764387493475);
-	sf::Event event;
-	debug = nullptr;
+	sf::RenderWindow window(sf::VideoMode(800, 1000), "Space Invaders - Nerys Thamm"); //Create the game window
+	srand(764387493475); //Initialise the randomizer
+	sf::Event event; //Initialise the event stack
+	debug = nullptr; //set the DebugWindow pointer to be nullptr
 
-	CGame::score = 0;
+	CGame::score = 0; //Set Score to 0 and level to 1
 	CGame::iLevel = 1;
 
-	
-	bool bIsPlaying = true;
-	sf::Font font;
+	bool bIsPlaying = true; //Set bIsPlaying to true
+
+	sf::Font font; //Load font from resources
 	font.loadFromFile("Resources/sansation.ttf");
-	CPlayer* player = new CPlayer();
-	CAlienManager* manager = new CAlienManager();
-	sf::Text score;
+
+	CPlayer* player = new CPlayer(); //Create new player
+	CAlienManager* manager = new CAlienManager(); //Spawn a wave of aliens
+
+	sf::Text score; //Create text to display the players score
 	score.setPosition(sf::Vector2f(10, 10));
 	score.setFillColor(sf::Color::White);
 	score.setFont(font);
-	sf::Text lives;
+
+	sf::Text lives; //Create text to display the players remaining lives
 	lives.setPosition(sf::Vector2f(650, 10));
 	lives.setFillColor(sf::Color::White);
 	lives.setFont(font);
 
-	CBunker bunker(125, 800);
+	CBunker bunker(125, 800); //Instantiate and position 4 bunkers
 	CBunker bunker2(275, 800);
 	CBunker bunker3(425, 800);
 	CBunker bunker4(575, 800);
-	while (bIsPlaying)
+
+	while (bIsPlaying) //While the game is being played
 	{
-		while (window.pollEvent(event))
+		while (window.pollEvent(event)) //Read all events
 		{
-			switch (event.type)
+			switch (event.type) // if the type of event is...
 			{
-			case sf::Event::Closed:
-				bIsPlaying = false;
-				window.close();
+			case sf::Event::Closed: //the window being closed...
+				bIsPlaying = false; 
+				window.close(); //close the window
+
+				//free up memory
+
 				if (debug != nullptr)
 				{
 					delete debug;
@@ -60,18 +63,19 @@ int CGame::Start()
 				delete player;
 				delete manager;
 				CAlien::DeleteLasers();
-				return 0;
+
+				return 0; //Return to main menu with 0 score due to [x]ing out of the window
 				break;
-			case sf::Event::KeyPressed:
-				switch (event.key.code)
+			case sf::Event::KeyPressed: //A key being pressed...
+				switch (event.key.code) //If that key is...
 				{
-				case sf::Keyboard::Escape:
-					if (debug == nullptr)
+				case sf::Keyboard::Escape: //The Escape Key...
+					if (debug == nullptr) //If the Debug menu doesnt already exist, make one and turn debug mode on
 					{
 						debug = new DebugWindow();
 						bDebugMode = true;
 					}
-					else
+					else //Otherwise, turn debug mode off
 					{
 						
 						bDebugMode = false;
@@ -86,8 +90,9 @@ int CGame::Start()
 
 		}
 
-		window.clear();
-		if (debug != nullptr)
+		window.clear();//Clear the window
+
+		if (debug != nullptr)//If a debug window exists and Debug mode isnt on, close the debug window and free up its memory
 		{
 			if (!bDebugMode)
 			{
@@ -97,8 +102,10 @@ int CGame::Start()
 			}
 		}
 
-		if (manager->MoveAliens() || CGame::iPlayerLives <= 0)
+		if (manager->MoveAliens() || CGame::iPlayerLives <= 0) //If the aliens reach the bottom of the screen or the player runs out of lives...
 		{
+			//Free up memory
+
 			if (debug != nullptr)
 			{
 				delete debug;
@@ -106,41 +113,46 @@ int CGame::Start()
 			bDebugMode = false;
 			bIsPlaying = false;
 			
-			window.close();
-			CWindowUtilities::ToDrawList.clear();
+			window.close(); //Close the game window
+
+			CWindowUtilities::ToDrawList.clear(); //Clear the drawing list
+
+			//Free up memory
 			delete player;
 			delete manager;
 			CAlien::DeleteLasers();
-			return CGame::score;
+
+			return CGame::score; //Return the players current score to the main menu
 		}
-		CObjectController::UpdateObjects();
 
 
+		CObjectController::UpdateObjects(); //Update all GameObjects
 
-		if (manager->iRemainingAliens <= 0)
+
+		if (manager->iRemainingAliens <= 0) //If every alien in the wave has been defeated...
 		{
 			delete manager;
-			manager = new CAlienManager();
-			CGame::iLevel++;
+			manager = new CAlienManager(); //replace the wave with a new one
+			CGame::iLevel++; //and increase the level by one
 		}
 
-
-
-		score.setString("Score: [ " + std::to_string(CGame::score) + " ]");
+		score.setString("Score: [ " + std::to_string(CGame::score) + " ]"); //Set the value of the player score and life GUI elements
 		lives.setString("Lives: [ " + std::to_string(CGame::iPlayerLives) + " ]");
-		CWindowUtilities::Draw(&score);
+
+		CWindowUtilities::Draw(&score); //add them to the draw list
 		CWindowUtilities::Draw(&lives);
 
-		for each (sf::Drawable* Draw in CWindowUtilities::ToDrawList)
+		for each (sf::Drawable* Draw in CWindowUtilities::ToDrawList) //Draw every object on the draw list
 		{
 			window.draw(*Draw);
 		}
-		CWindowUtilities::ToDrawList.clear();
-		for each (CLaser* laser in CAlien::Lasers)
+		CWindowUtilities::ToDrawList.clear(); //Then empty it so its ready for the next frame
+
+		for each (CLaser* laser in CAlien::Lasers) //For every laser that exists this frame
 		{
-			if (laser->bIsEnabled)
+			if (laser->bIsEnabled) //If it is enabled
 			{
-				if (
+				if (											//Check if it has hit one of the bunkers, or if it has left the screen
 					bunker.CheckCollisions(laser->laserRect) ||
 					bunker2.CheckCollisions(laser->laserRect) ||
 					bunker3.CheckCollisions(laser->laserRect) ||
@@ -149,14 +161,14 @@ int CGame::Start()
 					laser->fY >= 1000
 					)
 				{
-					laser->bIsEnabled = false;
+					laser->bIsEnabled = false; //If so, disable the laser
 				}
 			}
 		}
 
-		if (player->bBulletExists)
+		if (player->bBulletExists) //If the player currently has a bullet spawned
 		{
-			if (
+			if (															//Check if the bullet is colliding with a bunker, or if it has left the screen
 				manager->CheckCollisions(player->pBullet->bulletRect) ||
 				bunker.CheckCollisions(player->pBullet->bulletRect) ||
 				bunker2.CheckCollisions(player->pBullet->bulletRect) ||
@@ -165,12 +177,12 @@ int CGame::Start()
 				player->pBullet->fY <= 0
 				)
 			{
-				delete player->pBullet;
+				delete player->pBullet;  //If so, despawn the bullet
 				player->bBulletExists = false;
 			}
 
 		}
-		window.display();
+		window.display();//Display the drawn frame to the window
 	}
 }
 

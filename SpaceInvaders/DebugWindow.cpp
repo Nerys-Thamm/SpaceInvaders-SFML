@@ -5,10 +5,6 @@
 #include "EasySFML.h"
 #include <algorithm>
 
-
-
-
-
 DebugWindow::DebugWindow()
 {
 	window = new sf::RenderWindow(sf::VideoMode(400, 400), "Space Invaders - Debug");
@@ -42,13 +38,11 @@ DebugWindow::DebugWindow()
 
 }
 
-
 DebugWindow::~DebugWindow()
 {
 	window->close();
 	delete window;
 }
-
 
 void DebugWindow::Update(float _fDeltaTime)
 {

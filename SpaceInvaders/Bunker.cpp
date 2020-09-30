@@ -1,6 +1,5 @@
 #include "Bunker.h"
 
-
 CBunker::CBunker(float _fX, float _fY)
 {
 	fX = _fX;
@@ -29,10 +28,6 @@ CBunker::CBunker(float _fX, float _fY)
 		}
 	}
 }
-
-
-
-
 
 bool CBunker::CheckCollisions(sf::RectangleShape _rect)
 {
