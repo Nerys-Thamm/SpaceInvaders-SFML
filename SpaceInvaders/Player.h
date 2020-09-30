@@ -34,14 +34,6 @@ public:
 
 	// ********************************************************************************
 	/// <summary>
-	/// Destructor for the CPlayer class
-	/// </summary>
-	/// <returns></returns>
-	// ********************************************************************************
-	~CPlayer();
-
-	// ********************************************************************************
-	/// <summary>
 	/// Moves the player on the X axis within a range
 	/// </summary>
 	/// <param name="_fDeltaX">Type: float, the positive or negative amount to change by</param>

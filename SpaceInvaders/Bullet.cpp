@@ -28,35 +28,6 @@ CBullet::CBullet(float _fX)
 // ********************************************************************************
 /// <summary>
 /// <para>
-/// Destructor for Class: CBullet
-/// </para>
-/// </summary>
-/// <returns></returns>
-// ********************************************************************************
-CBullet::~CBullet()
-{
-}
-
-// ********************************************************************************
-/// <summary>
-/// <para>
-/// Function name: Move
-/// Function is part of Class: CBullet
-/// </para>
-/// </summary>
-/// <param name="_fDeltaTime"><para>
-/// Type: float, time since last frame
-/// </para></param>
-// ********************************************************************************
-void CBullet::Move(float _fDeltaTime)
-{
-	fY -= 400 * _fDeltaTime * CGame::iBulletSpeedMult;
-	bulletRect.setPosition(sf::Vector2f(fX, fY));
-}
-
-// ********************************************************************************
-/// <summary>
-/// <para>
 /// Function name: Update
 /// Function is part of Class: CBullet
 /// </para>
@@ -67,7 +38,8 @@ void CBullet::Move(float _fDeltaTime)
 // ********************************************************************************
 void CBullet::Update(float _fDeltaTime)
 {
-	Move(_fDeltaTime);
+	fY -= 400 * _fDeltaTime * CGame::iBulletSpeedMult;
+	bulletRect.setPosition(sf::Vector2f(fX, fY));
 	CWindowUtilities::Draw(&bulletRect);
 }
 

@@ -2,13 +2,6 @@
 #include "Game.h"
 
 
-
-// ********************************************************************************
-/// <summary>
-/// Constructor for the CPlayer class
-/// </summary>
-/// <returns></returns>
-// ********************************************************************************
 CPlayer::CPlayer()
 {
 	playerTexture.loadFromFile("Resources/Player.png");
@@ -29,22 +22,8 @@ CPlayer::CPlayer()
 }
 
 
-// ********************************************************************************
-/// <summary>
-/// Destructor for the CPlayer class
-/// </summary>
-/// <returns></returns>
-// ********************************************************************************
-CPlayer::~CPlayer()
-{
-}
 
-// ********************************************************************************
-/// <summary>
-/// Moves the player on the X axis within a range
-/// </summary>
-/// <param name="_fDeltaX"></param>
-// ********************************************************************************
+
 void CPlayer::TryMove(float _fDeltaX)
 {
 	if ((fPlayerX + _fDeltaX < 50) || (fPlayerX + _fDeltaX > 750))
@@ -60,12 +39,7 @@ void CPlayer::TryMove(float _fDeltaX)
 	}
 }
 
-// ********************************************************************************
-/// <summary>
-/// Called every frame
-/// </summary>
-/// <param name="_fDeltaTime">Type: Float, Time since last frame</param>
-// ********************************************************************************
+
 void CPlayer::Update(float _fDeltaTime)
 {
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
@@ -100,13 +74,7 @@ void CPlayer::Update(float _fDeltaTime)
 	
 }
 
-// ********************************************************************************
-/// <summary>
-/// Check if the provided shape is colliding with the player
-/// </summary>
-/// <param name="lazer">Type: SFML RectangleShape</param>
-/// <returns>True if a collision is occuring, false otherwise</returns>
-// ********************************************************************************
+
 bool CPlayer::CheckCollision(sf::RectangleShape lazer)
 {
 	if (lazer.getGlobalBounds().intersects(playerRect.getGlobalBounds()))

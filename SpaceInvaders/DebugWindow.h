@@ -3,7 +3,7 @@
 #include <vector>
 // --------------------------------------------------------------------------------
 /// <summary>
-/// 
+/// The Debug Window that contains a menu with which the user can alter game variables during run time
 /// </summary>
 // --------------------------------------------------------------------------------
 class DebugWindow
@@ -12,7 +12,9 @@ class DebugWindow
 public:
 	// ********************************************************************************
 	/// <summary>
-	/// 
+	/// <para>
+	/// Constructor for Class: DebugWindow
+	/// </para>
 	/// </summary>
 	/// <returns></returns>
 	// ********************************************************************************
@@ -20,39 +22,47 @@ public:
 
 	// ********************************************************************************
 	/// <summary>
-	/// 
+	/// <para>
+	/// Destructor for Class: DebugWindow
+	/// </para>
 	/// </summary>
 	/// <returns></returns>
 	// ********************************************************************************
 	~DebugWindow();
 
-	/// <summary></summary>
+	/// <summary>The Debug Window</summary>
 	sf::RenderWindow* window;
 
-	/// <summary></summary>
+	/// <summary>The Event Stack for the Debug Window</summary>
 	sf::Event wEvent;
 
-	/// <summary></summary>
+	/// <summary>The Font to be used in the Debug Window</summary>
 	sf::Font font;
 
 	// --------------------------------------------------------------------------------
 	/// <summary>
-	/// 
+	/// SFML text containing instructions on how to use the Debug menu
 	/// </summary>
 	// --------------------------------------------------------------------------------
 	sf::Text instructions;
 
-	/// <summary></summary>
+	/// <summary>A vector of menu options as SFML text</summary>
 	std::vector<sf::Text> Options;
 
-	/// <summary></summary>
+	/// <summary>The index of the current option selection in the Debug Menu</summary>
 	int iCurrentIndex;
 
 	// ********************************************************************************
 	/// <summary>
-	/// 
+	/// <para>
+	/// Function name: Update
+	/// Function is part of Class: DebugWindow
+	/// Called every frame, this method is used to handle input to the Debug Window and to draw the Debug window
+	/// </para>
 	/// </summary>
-	/// <param name="_fDeltaTime"></param>
+	/// <param name="_fDeltaTime">Type: Float, the time since the last frame<para>
+	/// 
+	/// </para></param>
 	// ********************************************************************************
 	virtual void Update(float _fDeltaTime);
 	

@@ -51,17 +51,6 @@ CAlien::CAlien(float _fX, float _fY, int _score = 0)
 
 // ********************************************************************************
 /// <summary>
-/// Destructor for the CAlien class
-/// </summary>
-/// <returns></returns>
-// ********************************************************************************
-CAlien::~CAlien()
-{
-	
-}
-
-// ********************************************************************************
-/// <summary>
 /// <para>
 /// Function name: Move
 /// Function is part of Class: CAlien

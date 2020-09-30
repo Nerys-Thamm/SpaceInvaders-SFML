@@ -4,62 +4,64 @@
 
 // --------------------------------------------------------------------------------
 /// <summary>
-/// 
+/// A structure that stores a hitbox and whether it has been destroyed, acting as the blocks the CBunkers are constructed from
 /// </summary>
 // --------------------------------------------------------------------------------
 struct BunkerBlock
 {
-	/// <summary></summary>
+	/// <summary>The hitbox of the block</summary>
 	sf::RectangleShape rect;
 
-	/// <summary></summary>
+	/// <summary>Whether the block has been destroyed</summary>
 	bool bIsDestroyed;
 };
 // --------------------------------------------------------------------------------
 /// <summary>
-/// 
+/// Instances of CBunker are used as the 4 bunkers protecting the player from alien lasers
 /// </summary>
 // --------------------------------------------------------------------------------
 class CBunker
 	: CGameObject
 {
 public:
-	/// <summary></summary>
+	/// <summary>An array that stores 15 bunker blocks</summary>
 	BunkerBlock BlockArr[5][3];
 	
-	/// <summary></summary>
+	/// <summary>The Coordinates of the bunker</summary>
 	float fX, fY;
 
 	// ********************************************************************************
 	/// <summary>
-	/// 
+	/// <para>
+	/// Constructor for Class: CBunker
+	/// </para>
 	/// </summary>
-	/// <param name="_fX"></param>
-	/// <param name="_fY"></param>
+	/// <param name="_fX">Type: Float, X coord to spawn the bunker at</param>
+	/// <param name="_fY">Type: Float, Y coord to spawn the bunker at</param>
 	/// <returns></returns>
 	// ********************************************************************************
 	CBunker(float _fX, float _fY);
 
 	// ********************************************************************************
 	/// <summary>
-	/// 
+	/// <para>
+	/// Function name: CheckCollisions
+	/// Function is part of Class: CBunker
+	/// </para>
 	/// </summary>
-	/// <returns></returns>
-	// ********************************************************************************
-	~CBunker();
-
-	// ********************************************************************************
-	/// <summary>
-	/// 
-	/// </summary>
-	/// <param name="_rect"></param>
-	/// <returns></returns>
+	/// <param name="_rect"><para>
+	/// Type: sf::RectangleShape
+	/// </para></param>
+	/// <returns>Value of type: bool</returns>
 	// ********************************************************************************
 	bool CheckCollisions(sf::RectangleShape _rect);
 
 	// ********************************************************************************
 	/// <summary>
-	/// 
+	/// <para>
+	/// Function name: FixedUpdate
+	/// Function is part of Class: CBunker
+	/// </para>
 	/// </summary>
 	// ********************************************************************************
 	virtual void FixedUpdate();

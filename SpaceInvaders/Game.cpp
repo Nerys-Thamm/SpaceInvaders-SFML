@@ -9,41 +9,10 @@
 #include "Game.h"
 #include "DebugWindow.h"
 
-// ********************************************************************************
-/// <summary>
-/// <para>
-/// Constructor for Class: CGame
-/// </para>
-/// </summary>
-/// <returns></returns>
-// ********************************************************************************
-CGame::CGame()
-{
-	
-}
 
-// ********************************************************************************
-/// <summary>
-/// <para>
-/// Destructor for Class: CGame
-/// </para>
-/// </summary>
-/// <returns></returns>
-// ********************************************************************************
-CGame::~CGame()
-{
-	
-}
 
-// ********************************************************************************
-/// <summary>
-/// <para>
-/// Function name: Start
-/// Function is part of Class: CGame
-/// </para>
-/// </summary>
-/// <returns>Value of type: int</returns>
-// ********************************************************************************
+
+
 int CGame::Start()
 {
 	sf::RenderWindow window(sf::VideoMode(800, 1000), "Space Invaders - Nerys Thamm");

@@ -1,20 +1,7 @@
 #include "Laser.h"
 
 
-// ********************************************************************************
-/// <summary>
-/// <para>
-/// Constructor for Class: CLaser
-/// </para>
-/// </summary>
-/// <param name="_fX"><para>
-/// 			Type: float, Specifies X coord to spawn the Laser at
-/// 		</para></param>
-/// <param name="_fY"><para>
-/// 			Type: float, Specifies Y coord to spawn the Laser at
-/// 		</para></param>
-/// <returns></returns>
-// ********************************************************************************
+
 CLaser::CLaser(float _fX, float _fY)
 {
 	fX = _fX;
@@ -27,26 +14,7 @@ CLaser::CLaser(float _fX, float _fY)
 	laserRect.setPosition(sf::Vector2f(fX, fY));
 }
 
-// ********************************************************************************
-/// <summary>
-/// <para>
-/// Destructor for Class: CLaser
-/// </para>
-/// </summary>
-/// <returns></returns>
-// ********************************************************************************
-CLaser::~CLaser()
-{
-}
 
-// ********************************************************************************
-/// <summary>
-/// <para>
-/// Function name: FixedUpdate
-/// Function is part of Class: CLaser
-/// </para>
-/// </summary>
-// ********************************************************************************
 void CLaser::FixedUpdate()
 {
 	if (bIsEnabled)

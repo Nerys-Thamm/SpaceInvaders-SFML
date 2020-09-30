@@ -4,28 +4,30 @@
 
 // --------------------------------------------------------------------------------
 /// <summary>
-/// 
+/// A container for CAlien
 /// </summary>
 // --------------------------------------------------------------------------------
 class CAlienManager :
 	private CGameObject
 {
 public:
-	/// <summary></summary>
+	/// <summary>Array containing pointers to all spawned CAliens</summary>
 	CAlien* AlienArr[5][11];
 
-	/// <summary></summary>
+	/// <summary>Pointer that holds a Special bonus point ship when it spawns</summary>
 	CAlien* SpecialShip = nullptr;
 
-	/// <summary></summary>
+	/// <summary>The number of aliens remaining</summary>
 	int iRemainingAliens;
 
-	/// <summary></summary>
+	/// <summary>If an alien has collided with the side of the screen this frame</summary>
 	bool bSideCollision;
 
 	// ********************************************************************************
 	/// <summary>
-	/// 
+	/// <para>
+	/// Constructor for Class: CAlienManager
+	/// </para>
 	/// </summary>
 	/// <returns></returns>
 	// ********************************************************************************
@@ -33,7 +35,9 @@ public:
 
 	// ********************************************************************************
 	/// <summary>
-	/// 
+	/// <para>
+	/// Destructor for Class: CAlienManager
+	/// </para>
 	/// </summary>
 	/// <returns></returns>
 	// ********************************************************************************
@@ -41,32 +45,46 @@ public:
 
 	// ********************************************************************************
 	/// <summary>
-	/// 
+	/// <para>
+	/// Function name: MoveAliens
+	/// Function is part of Class: CAlienManager
+	/// </para>
 	/// </summary>
-	/// <returns></returns>
+	/// <returns>Value of type: bool</returns>
 	// ********************************************************************************
 	bool MoveAliens();
 
 	// ********************************************************************************
 	/// <summary>
-	/// 
+	/// <para>
+	/// Function name: OnSideCollision
+	/// Function is part of Class: CAlienManager
+	/// </para>
 	/// </summary>
-	/// <returns></returns>
+	/// <returns>Value of type: bool</returns>
 	// ********************************************************************************
 	bool OnSideCollision();
 
 	// ********************************************************************************
 	/// <summary>
-	/// 
+	/// <para>
+	/// Function name: CheckCollisions
+	/// Function is part of Class: CAlienManager
+	/// </para>
 	/// </summary>
-	/// <param name="_rect"></param>
-	/// <returns></returns>
+	/// <param name="_rect"><para>
+	/// Type: sf::RectangleShape
+	/// </para></param>
+	/// <returns>Value of type: bool</returns>
 	// ********************************************************************************
 	bool CheckCollisions(sf::RectangleShape _rect);
 
 	// ********************************************************************************
 	/// <summary>
-	/// 
+	/// <para>
+	/// Function name: FixedUpdate
+	/// Function is part of Class: CAlienManager
+	/// </para>
 	/// </summary>
 	// ********************************************************************************
 	virtual void FixedUpdate();

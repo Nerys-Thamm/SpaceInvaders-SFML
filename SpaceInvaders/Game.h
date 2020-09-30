@@ -27,27 +27,6 @@ public:
 	/// <summary>Stores the current level, i.e the number of waves of aliens the player has defeated. This is used as a multiplier for alien speed to scale difficulty.</summary>
 	static int iLevel;
 
-
-	// ********************************************************************************
-	/// <summary>
-	/// <para>
-	/// Constructor for Class: CGame
-	/// </para>
-	/// </summary>
-	/// <returns></returns>
-	// ********************************************************************************
-	CGame();
-
-	// ********************************************************************************
-	/// <summary>
-	/// <para>
-	/// Destructor for Class: CGame
-	/// </para>
-	/// </summary>
-	/// <returns></returns>
-	// ********************************************************************************
-	~CGame();
-
 	/// <summary>Stores the debug window when it is opened, remains nullptr otherwise</summary>
 	DebugWindow* debug = nullptr;
 
