@@ -1,3 +1,24 @@
+////////////////////////////////////////////////////////////
+//==========================================================
+// Bachelor of Software Engineering                       
+// Media Design School                                    
+// Auckland                                               
+// New Zealand                                            
+//----------------------------------------------------------
+// (c) 2020 Media Design School                           
+//==========================================================
+//   File Name  : Bunker.h                          
+//----------------------------------------------------------
+//  Description : Contains the definition and prototypes    
+//  for the CBunker class, which acts as a container for                                                      
+//  the CBunker struct, also defined here.                                                      
+//                                                        
+//----------------------------------------------------------
+//    Author    : Nerys Thamm BSE20021                    
+//----------------------------------------------------------
+//    E-mail    : NerysThamm@gmail.com                    
+//==========================================================
+////////////////////////////////////////////////////////////
 #pragma once
 #include "Sprites.h"
 #include "EasySFML.h"

@@ -1,3 +1,53 @@
+////////////////////////////////////////////////////////////
+//==========================================================
+// Bachelor of Software Engineering                       
+// Media Design School                                    
+// Auckland                                               
+// New Zealand                                            
+//----------------------------------------------------------
+// (c) 2020 Media Design School                           
+//==========================================================
+//   File Name  : EasySFML.h                          
+//----------------------------------------------------------
+//  Description : Contains the definition and prototypes    
+//  for the CGameObject, CObjectController, and                                                      
+//  CWindowUtilities classes that make up the EasySFML                                                      
+//  framework. 
+//  
+//  EasySFML is a framework intended to streamline SFML 
+//  development by allowing developers to utilise a code
+//  structure more similar to popular game engines.
+//
+//  It does this by introducing a CGameObject base class
+//  that changes the way object instances in the game 
+//  function by allowing any derived object to independantly
+//  run code without relying on their methods being called 
+//  manually for each instance by the developer.
+//
+//  Classes derived from CGameObject can choose to implement
+//  any number/combination of three methods:
+//
+//  - Update() Is called every frame, the change in time since the last frame was drawn, called deltaTime, is given as a parameter
+//  - FixedUpdate() Is called at a fixed interval that does not vary with framerate
+//  - LateUpdate() Is called after every other update method is complete, deltaTime is given as a parameter
+//
+//  Every implemented method will be called accordingly by
+//  the CObjectController class as long as the UpdateObjects()
+//  method is called within the game loop.
+//
+//  CGameObject derived classes also have the bIsEnabled property which is always true on instantiation.
+//  This can be useful for when you need to disable instances of objects without destroying them.
+//
+//  CWindowUtilities is a static class that addresses any issues with accessing the RenderWindow instance from difficult areas in your code
+//  it accomplishes this by allowing the developer to add Drawable objects to a vector from anywhere in the code, which is then used to draw
+//  each of the objects using the RenderWindow in the main loop.
+//  
+//----------------------------------------------------------
+//    Author    : Nerys Thamm BSE20021                    
+//----------------------------------------------------------
+//    E-mail    : NerysThamm@gmail.com                    
+//==========================================================
+////////////////////////////////////////////////////////////
 #pragma once
 #include <SFML\System.hpp>
 #include <SFML\Graphics.hpp>

@@ -1,3 +1,25 @@
+////////////////////////////////////////////////////////////
+//==========================================================
+// Bachelor of Software Engineering                       
+// Media Design School                                    
+// Auckland                                               
+// New Zealand                                            
+//----------------------------------------------------------
+// (c) 2020 Media Design School                           
+//==========================================================
+//   File Name  : Main.cpp                          
+//----------------------------------------------------------
+//  Description : Entry point of the program. Contains the    
+//  Main Menu code as well as the loading and saving of                                                       
+//  Leaderboard data, polling system time, and reading                                                      
+//  Windows User Account data to personalise the experience.                                                      
+//----------------------------------------------------------
+//    Author    : Nerys Thamm BSE20021                    
+//----------------------------------------------------------
+//    E-mail    : NerysThamm@gmail.com                    
+//==========================================================
+////////////////////////////////////////////////////////////
+
 #include <SFML/Graphics.hpp>
 #include <string>
 #include "EasySFML.h"

@@ -1,3 +1,24 @@
+////////////////////////////////////////////////////////////
+//==========================================================
+// Bachelor of Software Engineering                       
+// Media Design School                                    
+// Auckland                                               
+// New Zealand                                            
+//----------------------------------------------------------
+// (c) 2020 Media Design School                           
+//==========================================================
+//   File Name  : AlienManager.h                          
+//----------------------------------------------------------
+//  Description : Contains the definition and prototypes    
+//  for the CAlienManager class, which acts as a container                                                      
+//  for CAlien.                                                      
+//                                                        
+//----------------------------------------------------------
+//    Author    : Nerys Thamm BSE20021                    
+//----------------------------------------------------------
+//    E-mail    : NerysThamm@gmail.com                    
+//==========================================================
+////////////////////////////////////////////////////////////
 #pragma once
 #include "Alien.h"
 #include "EasySFML.h"
